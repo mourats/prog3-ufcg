@@ -1,13 +1,18 @@
+<!--UFCG
+Aluno: Thiago Santos de Moura - 116210967
+Disciplina: Programação III-->
+
 <html>
 <head>
-<meta charset="utf-8">
-<title>Atividade de Pro3</title>
+  <meta charset="utf-8">
+  <meta name="author" content="Thiago Moura">
+  <title>Ativ Prog3 - Assíncrona</title>
 </head>
 <body>
 
   <div align="center">
     <h1 id='contador'>0</h1>
-    <button type="button" onclick="start()" id=''>start</button>
+    <button type="button" onclick="start()">start</button>
     <button type="button" onclick="stop()">stop</button>
     <button type="button" onclick="reset()">reset</button>
   </div>
@@ -15,24 +20,32 @@
   <script type="text/javascript">
     "use strict"
 
-  /*function contagem(){
-    while(contador.innerHTML !== 10) {contador.innerHTML += 1;}
-  }
-  while(contador.innerHTML !== 10) {contador.innerHTML += 1;}
-*/
+  var contador = document.getElementById('contador');
+  var id = null;
+  var cont = 1;
 
+  function contagem(){
+    contador.innerText = "" + cont;
+    cont = cont + 1;
+  }
 
   function start(){
-    var contador = document.getElementById('contador');
-    setTimeout(function (){contador.innerHTML = parseInt(contador.innerHTML) +1;}, 1000);
 
-    console.log(contador);
-
+    if(!id){
+      id = setInterval(contagem, 1000);
+      }
     }
 
-    function stop(){
-      return true;
+  function stop(){
+      clearInterval(id);
+      id = null;
     }
+
+  function reset(){
+    cont = 0;
+    contagem();
+    stop();
+  }
   </script>
 
 </body>
